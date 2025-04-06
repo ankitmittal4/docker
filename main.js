@@ -4,7 +4,8 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 app.get('/', (req, res) => {
-    return res.json({ message: 'I am Nodejs Container, Bye' });
+    // return res.send('I am Nodejs Container, Bye');
+    return res.json({ message: 'I am Nodejs Cont ainer, Bye' });
 });
 
 app.listen(PORT, () => {
