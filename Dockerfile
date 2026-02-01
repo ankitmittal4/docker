@@ -1,14 +1,14 @@
-# FROM ubuntu
-# RUN apt-get update && \
-#     apt-get install -y curl && \
-#     apt-get upgrade -y && \
-#     curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
-#     apt-get install -y nodejs
-FROM node
+FROM node:20.18.0
 
-COPY package.json package.json
-COPY package-lock.json package-lock.json
-COPY main.js main.js
+WORKDIR src/ankit
 
-RUN npm install 
-ENTRYPOINT [ "node", "main.js" ]
+# install app dependencies
+COPY package*.json ./
+
+RUN npm i
+
+COPY . .
+
+EXPOSE 3000
+
+CMD [ "node", "main.js" ]
